@@ -11,7 +11,7 @@ use std::thread;
 
 pub use self::clipboard::*;
 pub use self::context::*;
-pub use self::dock::Dock;
+pub use self::dock::{Dock, DockNode};
 pub use self::drag::{
     DragFloat, DragFloat2, DragFloat3, DragFloat4, DragFloatRange2, DragInt, DragInt2, DragInt3,
     DragInt4, DragIntRange2,
