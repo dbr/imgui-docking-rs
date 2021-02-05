@@ -528,3 +528,28 @@ pub enum Direction {
     Up = sys::ImGuiDir_Up,
     Down = sys::ImGuiDir_Down,
 }
+
+
+/// # Docking
+impl<'ui> Ui<'ui> {
+    pub fn dockspace(&'ui self, label: &ImStr) {
+        unsafe {
+            let id = sys::igGetIDStr(label.as_ptr() as *const c_char);
+            sys::igDockSpace(
+                id,
+                [0.0, 0.0].into(),
+                0,
+                ::std::ptr::null::<sys::ImGuiWindowClass>());
+        }
+    }
+
+    pub fn dockspace_over_viewport(&'ui self) {
+        unsafe {
+            sys::igDockSpaceOverViewport(
+                sys::igGetMainViewport(),
+                0,
+                ::std::ptr::null::<sys::ImGuiWindowClass>(),
+            );
+        }
+    }
+}
